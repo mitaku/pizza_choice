@@ -1,0 +1,11 @@
+%h1 hoge
+
+:erb
+  <pre id="log">
+  </pre>
+
+  <script>
+    // reading
+    var es = new EventSource('/subscribe/tick');
+    es.onmessage = function(e) { log.innerHTML += "\n" + e.data };
+  </script>
