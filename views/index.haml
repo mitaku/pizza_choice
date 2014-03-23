@@ -1,11 +1,9 @@
-%h1 hoge
-
-:erb
-  <pre id="log">
-  </pre>
-
-  <script>
-    // reading
-    var es = new EventSource('/subscribe/tick');
-    es.onmessage = function(e) { log.innerHTML += "\n" + e.data };
-  </script>
+%div(ng-controller="PizzasCtrl")
+  .row.pizza_list
+    %div.col-md-2.pizza(ng-repeat="pizza in contents")
+      %span No.{{ pizza.id }}
+      %span -
+      %span(style="color:red") {{ pizza.count }}
+      %img(ng-src="{{image_path(pizza)}}" width="100%" ng-click="vote(pizza)")
+      %strong {{ pizza.name }}
+      %p {{ pizza.description }}

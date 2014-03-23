@@ -7,6 +7,7 @@ gem "sinatra-pubsub"
 
 gem "haml"
 gem "coffee-script"
+gem "redis-objects"
 
 
 group :development do

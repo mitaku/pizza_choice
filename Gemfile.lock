@@ -18,6 +18,8 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     redis (3.0.7)
+    redis-objects (0.9.0)
+      redis (>= 3.0.2)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -44,6 +46,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   haml
+  redis-objects
   sinatra
   sinatra-contrib
   sinatra-pubsub
