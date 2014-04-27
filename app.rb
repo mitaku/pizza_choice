@@ -8,7 +8,7 @@ class Pizza
   include Redis::Objects
 
   attr_reader :id
-  counter :vote, start: 0
+  counter :vote, start: 0, expiration: 21600
 
 
   def initialize(id)
