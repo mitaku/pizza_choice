@@ -1,7 +1,7 @@
 app = angular.module('pizzaApp', ['ngResource'])
 
 
-pizzasCtrl = app.controller 'PizzasCtrl', ($scope, $filter, $resource) ->
+pizzasCtrl = app.controller 'PizzasCtrl', ($scope, $filter, $resource, $rootScope) ->
 
   Pizza = $resource "/pizzas/:id", {id:'@id'}, {
     vote: {method: "POST", url: "/pizzas/:id/vote"}
@@ -17,7 +17,9 @@ pizzasCtrl = app.controller 'PizzasCtrl', ($scope, $filter, $resource) ->
 
   es = new EventSource('/subscribe/vote')
   es.onmessage = (e) ->
-    angular.forEach $scope.contents, (content, i) ->
-      obj = JSON.parse(e.data)
-      if parseInt(content.id,10) == parseInt(obj.id,10)
-        content.count = obj.count
+    obj = JSON.parse(e.data)
+    $rootScope.$apply () ->
+      angular.forEach $scope.contents, (content) ->
+        if parseInt(content.id,10) == parseInt(obj.id,10)
+          console.log obj.id
+          content.count = obj.count
