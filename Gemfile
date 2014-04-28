@@ -8,10 +8,10 @@ gem "sinatra-pubsub"
 gem "haml"
 gem "coffee-script"
 gem "redis-objects"
+gem "thin"
 
 
 group :development do
-  gem "thin"
   gem "sinatra-contrib", require: "sinatra/reloader"
 end
 
